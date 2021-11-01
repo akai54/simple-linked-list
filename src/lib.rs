@@ -4,7 +4,6 @@ pub struct SimpleLinkedList<T> {
     // dummy is needed to avoid unused parameter error during compilation
     dummy: ::std::marker::PhantomData<T>,
 
-
     valeur: i32, //La valeur du noeud de la liste chainée est un entier de 32 bits (i32).
 
     //L'adresse du nœud suivant est contenu dans cette variable, sauf que dans RUST au moment de
@@ -16,9 +15,13 @@ pub struct SimpleLinkedList<T> {
     suivant: Option<Box<SimpleLinkedList<T>>>,
 }
 
-impl<T> SimpleLinkedList<T> {
+pub struct premier<T> {
+head: Option<Box<SimpleLinkedList<T>>>, // Le head correspond à la valeur du tout premier nœud dans la liste.
+}
+
+impl<T> premier<T> {
     pub fn new() -> Self {
-        unimplemented!()
+        premier{head: None}
     }
 
     // You may be wondering why it's necessary to have is_empty()
