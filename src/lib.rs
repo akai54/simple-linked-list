@@ -1,9 +1,10 @@
 use std::iter::FromIterator;
 
 pub struct SimpleLinkedList<T> {
-    // Delete this field
     // dummy is needed to avoid unused parameter error during compilation
     dummy: ::std::marker::PhantomData<T>,
+    valeur: i32,
+    suivant: Option<Box<SimpleLinkedList<T>>>,
 }
 
 impl<T> SimpleLinkedList<T> {
