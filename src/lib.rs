@@ -16,21 +16,23 @@ pub struct SimpleLinkedList<T> {
 }
 
 pub struct PREMIER<T> {
-    head: Option<Box<SimpleLinkedList<T>>>, // Le head correspond à la valeur du tout premier nœud dans la liste.
+    // Le head correspond à la valeur du tout premier nœud dans la liste.
+    head: Option<Box<SimpleLinkedList<T>>>,
 }
 
+// Ici on crée une liste chainée avec un premier élément vide (None).
 impl<T> PREMIER<T> {
     pub fn new() -> Self {
         PREMIER{head: None}
     }
 
-    // You may be wondering why it's necessary to have is_empty()
-    // when it can easily be determined from len().
-    // It's good custom to have both because len() can be expensive for some types,
-    // whereas is_empty() is almost always cheap.
-    // (Also ask yourself whether len() is expensive for SimpleLinkedList)
+    //Ici la fonction doit juste nous dire si la liste est vide (true) ou pas (false).
     pub fn is_empty(&self) -> bool {
-        unimplemented!()
+        if !&self.is_empty(){
+            true
+            }
+        false
+    }
     }
 
     pub fn len(&self) -> usize {
