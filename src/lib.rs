@@ -15,13 +15,13 @@ pub struct SimpleLinkedList<T> {
     suivant: Option<Box<SimpleLinkedList<T>>>,
 }
 
-pub struct premier<T> {
-head: Option<Box<SimpleLinkedList<T>>>, // Le head correspond à la valeur du tout premier nœud dans la liste.
+pub struct PREMIER<T> {
+    head: Option<Box<SimpleLinkedList<T>>>, // Le head correspond à la valeur du tout premier nœud dans la liste.
 }
 
-impl<T> premier<T> {
+impl<T> PREMIER<T> {
     pub fn new() -> Self {
-        premier{head: None}
+        PREMIER{head: None}
     }
 
     // You may be wondering why it's necessary to have is_empty()
