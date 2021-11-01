@@ -3,7 +3,16 @@ use std::iter::FromIterator;
 pub struct SimpleLinkedList<T> {
     // dummy is needed to avoid unused parameter error during compilation
     dummy: ::std::marker::PhantomData<T>,
-    valeur: i32,
+
+
+    valeur: i32, //La valeur du noeud de la liste chainée est un entier de 32 bits (i32).
+
+    //L'adresse du nœud suivant est contenu dans cette variable, sauf que dans RUST au moment de
+    //la compilation nous devons déclarer les tailles exacts de chaque variable par exemple.
+    //Mais comme nous savons pas encore la taille du prochain nœud alors on pourra pas le stocker
+    //dans le STACK, il faudra alors allouer l'espace dans le HEAP et pour cela il faudra utiliser
+    //Option<Box. Ça fonctionne mais c'est ce qu'on appelle unsafe code dans RUST est donc il
+    //faudra penser à dé allouer l'espace pris par soi meme.
     suivant: Option<Box<SimpleLinkedList<T>>>,
 }
 
