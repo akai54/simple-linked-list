@@ -35,8 +35,16 @@ impl<T> PREMIER<T> {
     }
     }
 
+    // Ici la fonction doit juste nous retourner la taille de la liste.
     pub fn len(&self) -> usize {
-        unimplemented!()
+        let mut compteur: u32 = 0; //Compteur qui aura la taille de la liste entière.
+        let mut position_actuelle = &self.head; // Ce pointeur va parcourir la liste à partir du head.
+
+        while position_actuelle.is_ok(){
+            position_actuelle = &self.suivant;
+            compteur++;
+        }
+        compteur
     }
 
     pub fn push(&mut self, _element: T) {
