@@ -26,44 +26,55 @@ impl<T> PREMIER<T> {
         PREMIER{head: None}
     }
 
+
     //Ici la fonction doit juste nous dire si la liste est vide (true) ou pas (false).
     pub fn is_empty(&self) -> bool {
         if !&self.is_empty(){
             true
-            }
-        false
-    }
-    }
-
-    // Ici la fonction doit juste nous retourner la taille de la liste.
-    pub fn len(&self) -> usize {
-        let mut compteur: u32 = 0; //Compteur qui aura la taille de la liste entière.
-        let mut position_actuelle = &self.head; // Ce pointeur va parcourir la liste à partir du head.
-
-        while position_actuelle.is_ok(){
-            position_actuelle = &self.suivant;
-            compteur++;
         }
-        compteur
-    }
-
-    pub fn push(&mut self, _element: T) {
-        unimplemented!()
-    }
-
-    pub fn pop(&mut self) -> Option<T> {
-        unimplemented!()
-    }
-
-    pub fn peek(&self) -> Option<&T> {
-        unimplemented!()
-    }
-
-    pub fn rev(self) -> SimpleLinkedList<T> {
-        unimplemented!()
+        false
     }
 }
 
+// Ici la fonction doit juste nous retourner la taille de la liste.
+pub fn len(&self) -> usize {
+    let mut compteur: u32 = 0; //Compteur qui aura la taille de la liste entière.
+    let mut position_actuelle = &self.head; // Ce pointeur va parcourir la liste à partir du head.
+
+    //Tant qu'il existe des éléments dans la liste alors la fonction les parcourra et le compteur
+    //incrémentera. Après avoir fouillé je suis tombé sur ce site, et j'ai choisi de changer is_ok
+    //par is_some -> https://learning-rust.github.io/docs/e3.option_and_result.html
+
+    while position_actuelle.is_some(){
+        position_actuelle = &self.suivant;
+        compteur++;
+    }
+    compteur
+}
+
+// La fonction push prends la liste en question en argument ainsi que l'élément à ajouter là dans.
+// Comme ce nouveau élément doit être le premier élément dans la liste, alors il va falloir créer
+// une nouvelle liste avec cet élément en tête.
+pub fn push(&mut self, _element: T) {
+    let nouveau = Some(Box::new(SimpleLinkedList {
+        valeur: _element,
+        suivant: self.head.take(),
+    }));
+    self.head = nouveau;
+}
+
+pub fn pop(&mut self) -> Option<T> {
+    unimplemented!()
+}
+
+pub fn peek(&self) -> Option<&T> {
+    unimplemented!()
+}
+
+pub fn rev(self) -> SimpleLinkedList<T> {
+    unimplemented!()
+}
+}
 impl<T> FromIterator<T> for SimpleLinkedList<T> {
     fn from_iter<I: IntoIterator<Item = T>>(_iter: I) -> Self {
         unimplemented!()
